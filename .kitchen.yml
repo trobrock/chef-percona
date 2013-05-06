@@ -1,0 +1,16 @@
+---
+driver_plugin: vagrant
+
+platforms:
+- name: centos-6.3
+  driver_config:
+    box: opscode-centos-6.3
+    box_url: http://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.3_chef-11.2.0.box
+
+suites:
+- name: default
+  run_list: ["recipe[percona]"]
+  attributes: {}
+- name: server
+  run_list: ["recipe[percona::server]"]
+  attributes: {}
