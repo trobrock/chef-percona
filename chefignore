@@ -3,11 +3,7 @@
 # Lines that start with '# ' are comments.
 
 # Bundler
-vendor/gems
-vendor/bin
-vendor/doc
-vendor/gems
-vendor/specifications
+vendor/
 
 # OS generated files #
 ######################
