@@ -6,9 +6,11 @@ when "rhel", "centos"
   when "5.1"
     filename = "Percona-Server-server-51-5.1.68-rel14.6.551.rhel6.x86_64.rpm"
     url      = "http://www.percona.com/downloads/Percona-Server-5.1/Percona-Server-5.1.68-14.6/RPM/rhel6/x86_64/"
+    checksum = "e2011269b4342a20697f23756bf6cdf7e5f656dc3c37384e483c809ebed87716"
   end
   remote_file "#{Chef::Config[:file_cache_path]}/#{filename}" do
-    source "#{url}#{filename}"
+    source   "#{url}#{filename}"
+    checksum checksum
   end
 
   rpm_package "#{filename.sub(/\.rpm/, '')}" do
