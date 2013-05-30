@@ -12,11 +12,7 @@ Berksfile.lock
 Gemfile.lock
 bin/*
 .bundle/*
-vendor/gems
-vendor/bin
-vendor/doc
-vendor/gems
-vendor/specifications
+vendor/
 
 .kitchen/
 .kitchen.local.yml
