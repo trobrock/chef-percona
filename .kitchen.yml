@@ -14,3 +14,6 @@ suites:
 - name: server
   run_list: ["recipe[percona::server]"]
   attributes: {}
+- name: toolkit
+  run_list: ["recipe[percona::toolkit]"]
+  attributes: {}
