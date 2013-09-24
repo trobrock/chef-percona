@@ -19,6 +19,5 @@ when "rhel", "centos"
     source "#{Chef::Config[:file_cache_path]}/#{filename}"
   end
 when "debian", "ubuntu"
-  # TODO: do this
+  package "percona-toolkit"
 end
-

@@ -7,6 +7,13 @@
 # All rights reserved - Do Not Redistribute
 #
 
+case node['platform']
+when 'rhel', 'centos'
+  include_recipe "yum"
+when 'debian', 'ubuntu'
+  include_recipe "apt"
+end
+
 # Remove the mysql package, as it conflicts with percona
 package "mysql" do
   action :remove
@@ -29,11 +36,11 @@ when 'rhel', 'centos'
     source "#{Chef::Config[:file_cache_path]}/#{filename}"
   end
 when 'debian', 'ubuntu'
-  # I know this won't work straight out,
-  # but we don't run Ubuntu and I don't have
-  # time to work this out on Ubuntu/Debian yet.
-  execute "gpg --keyserver  hkp://keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A"
-  execute "gpg -a --export CD2EFD2A | sudo apt-key add -"
-  execute "echo 'deb http://repo.percona.com/apt VERSION main
-  deb-src http://repo.percona.com/apt VERSION main' > /etc/apt/sources.list"
+  apt_repository 'percona' do
+    uri          'http://repo.percona.com/apt'
+    distribution node['lsb']['codename']
+    components   ['main']
+    keyserver    'keys.gnupg.net'
+    key          '1C4CBDCDCD2EFD2A'
+  end
 end
