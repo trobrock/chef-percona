@@ -2,9 +2,9 @@ include_recipe "percona"
 
 case node['platform']
 when "rhel", "centos"
-  url      = "http://percona.com/get/"
-  filename = "percona-toolkit.rpm"
-  checksum = "4af394831ce11e74b0b3db70eec0d02f5b4540927d777f4dbde56322e0c7fca9"
+  url      = "http://www.percona.com/downloads/percona-toolkit/2.2.5/RPM/"
+  filename = "percona-toolkit-2.2.5-2.noarch.rpm"
+  checksum = "961397573b7ca9e95a1d72ae817a5a81896e94f1e04103283474cddffe116bcb"
 
   remote_file "#{Chef::Config[:file_cache_path]}/#{filename}" do
     source   "#{url}#{filename}"
